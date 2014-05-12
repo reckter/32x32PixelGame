@@ -21,8 +21,8 @@ public class BaseHudItem extends BaseInterface {
 	}
 
 	public void calculateFixedCoordinates() {
-		x = fixedX - level.getCamX();
-		y = fixedY - level.getCamY();
+		x = fixedX + level.getCamX();
+		y = fixedY + level.getCamY();
 	}
 
 	@Override

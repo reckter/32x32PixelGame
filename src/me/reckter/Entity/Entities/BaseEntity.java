@@ -33,7 +33,7 @@ public class BaseEntity {
 		isAlive = true;
 
 
-		//addComponent(new Position());
+		addComponent(new Position(level.tileHandler.getTile(0,0)));
 		addComponent(new Life(100));
 		addComponent(new Movement());
 		addComponent(new Collision(CollisionGroup.A));

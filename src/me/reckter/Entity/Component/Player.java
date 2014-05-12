@@ -7,5 +7,9 @@ package me.reckter.Entity.Component;
  */
 public class Player extends BaseComponent {
 
-	public final float MOMENTUM_GAIN = 200;
+	public me.reckter.Player owner;
+
+	public Player(me.reckter.Player owner) {
+		this.owner = owner;
+	}
 }

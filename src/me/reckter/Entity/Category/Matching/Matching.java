@@ -103,8 +103,10 @@ public class Matching {
 	static private void fillComponents() {
 
 		components.put("ability", Abilities.class);
+		components.put("building", Building.class);
 		components.put("collision", Collision.class);
 		components.put("enemy", Enemy.class);
+		components.put("energizer", Energizer.class);
 		components.put("life", Life.class);
 		components.put("menu", Menu.class);
 		components.put("movement", Movement.class);

@@ -5,8 +5,6 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 
-import java.util.Random;
-
 /**
  * Created by mediacenter on 08.05.14.
  *
@@ -17,14 +15,14 @@ public class BaseTile {
 	public int x;
 	public int y;
 
-	int color;
+	public int color;
 
 
 	public BaseTile(BaseLevel level, int x, int y) {
 		this.level = level;
 		this.x = x;
 		this.y = y;
-		color = new Random().nextInt(255);
+		color = 0;
 	}
 
 	public void render(Graphics g){

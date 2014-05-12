@@ -2,6 +2,7 @@ package me.reckter.Level;
 
 import me.reckter.Entity.Category.CollisionGroup;
 import me.reckter.Entity.Entities.BaseEntity;
+import me.reckter.Entity.Entities.Building.Energizer;
 import me.reckter.Entity.EntityHandler;
 import me.reckter.Entity.Events.*;
 import me.reckter.Entity.Logic.*;
@@ -11,6 +12,7 @@ import me.reckter.Interface.InterfaceHandler;
 import me.reckter.Log;
 import me.reckter.Particles.BaseParticle;
 import me.reckter.Particles.ParticleHandler;
+import me.reckter.Player;
 import me.reckter.Sound.SoundEngine;
 import me.reckter.Tile.TileHandler;
 import me.reckter.Util;
@@ -18,6 +20,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 /**
@@ -50,8 +53,12 @@ public class BaseLevel {
 	public int HEIGHT = 400;
 	public int WIDTH = 640;
 
+	public HashMap<String, Player> players;
+
 
 	public BaseLevel() {
+
+		this.players = new HashMap<String, Player>();
 
 		this.entities = new EntityHandler(this);
 
@@ -75,6 +82,7 @@ public class BaseLevel {
 	 */
 	public void populate() {
 		Log.info("Populting level...");
+		players.put("player", new Player("player", 500, 405));
 	}
 
 	/**
@@ -95,8 +103,10 @@ public class BaseLevel {
 
 		entities.add(new AbilityLogic(this), TickEvent.class);
 		entities.add(new BasicLogic(this), TickEvent.class, DeathEvent.class, DamageEvent.class);
+		entities.add(new Building(this), TickEvent.class);
 		entities.add(new DestroyedOnContact(this), CollisionEvent.class);
 		entities.add(new EnemyDeath(this), DeathEvent.class);
+		entities.add(new EnergizerLogic(this), TickEvent.class);
 		entities.add(new ProjectileLogic(this), DeathEvent.class, CollisionEvent.class);
 		entities.add(new TimeToLife(this), TickEvent.class);
 
